@@ -58,12 +58,13 @@ const PUPPET_PROGRAM_ID = new PublicKey("5s3PtT8kLYCv1WEp6dSh3T7EuF35Z6jSu5Cvx4h
 describe('Create a system account', () => {
 
   test("bankrun", async () => {
-    const context = await startAnchor("", [{name: "voting", programId: PUPPET_PROGRAM_ID}], []);
+    const context = await startAnchor("", [{ name: "voting", programId: PUPPET_PROGRAM_ID }], []);
     const provider = new BankrunProvider(context);
 
-    const puppetProgram = new Program<Voting>(
+    const puppetProgram = new Program < Voting > (
       IDL,
       provider,
+      PUPPET_PROGRAM_ID
     );
 
     const [pollAddress] = PublicKey.findProgramAddressSync(
@@ -73,10 +74,10 @@ describe('Create a system account', () => {
 
     await puppetProgram.methods.initializePoll(
       new anchor.BN(1),
-        new anchor.BN(0),
-        new anchor.BN(1759508293),
-        "test-poll",
-        "description",
+      new anchor.BN(0),
+      new anchor.BN(1759508293),
+      "test-poll",
+      "description",
     ).rpc();
 
     const pollAccount = await puppetProgram.account.pollAccount.fetch(pollAddress);
