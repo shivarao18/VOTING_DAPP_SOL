@@ -19,6 +19,7 @@
     "@tanstack/react-query": "^5.74.7",
     "@wallet-ui/react": "1.1.0-canary-20250415034938",
     "@wallet-ui/tailwind": "1.1.0-canary-20250415034938",
+    "anchor-bankrun": "^0.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "gill": "^0.8.3",
